@@ -29,7 +29,14 @@ jobs:
           path: ~/.npm
           key: npm-${{ runner.os }}-${{ hashFiles('**/package.json') }}
           restore-keys: npm-${{ runner.os }}-
-      - name: Install dependencies
+      - name: Install (packages/media_center)
+        working-directory: packages/media_center
+        run: npm install
+      - name: Install (packages/stream_cast)
+        working-directory: packages/stream_cast
+        run: npm install
+      - name: Install (streaming/admin)
+        working-directory: streaming/admin
         run: npm install
       - name: lint (streaming/admin)
         working-directory: streaming/admin
